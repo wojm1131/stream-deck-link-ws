@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url = 'https://repo.runelite.net' }
+}
+
+def runeLiteVersion = '1.13.8'
+
+dependencies {
+    compileOnly "net.runelite:client:$runeLiteVersion"
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    testImplementation "net.runelite:client:$runeLiteVersion"
+    testImplementation 'junit:junit:4.13.2'
+}
+
+group = 'com.alex.streamdecklinkws'
+version = '1.0.0'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
